@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glasser UAE - Premium Glass & Aluminium Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
+    }
+    header {
+      background: #0e1a2b;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative; /* Added for z-index */
+      z-index: 1000; /* Ensure header is above hero section content */
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #add8e6; /* Light blue on hover */
+    }
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden; /* Hide overflowing images */
+    }
+    .hero-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: slideshow 24s infinite; /* 4 images * 6s per image */
+      opacity: 0; /* Start hidden for smooth fade-in */
+    }
+    .hero-slideshow:nth-child(1) {
+      background-image: url('https://glasseruae.com/assets/images/slide1.jpg');
+      animation-delay: 0s;
+    }
+    .hero-slideshow:nth-child(2) {
+      background-image: url('https://glasseruae.com/assets/images/slide2.jpg'); /* Assuming slide2.jpg exists based on typical website structures */
+      animation-delay: 6s;
+    }
+    .hero-slideshow:nth-child(3) {
+      background-image: url('https://glasseruae.com/assets/images/slide3.jpg'); /* Assuming slide3.jpg exists */
+      animation-delay: 12s;
+    }
+    .hero-slideshow:nth-child(4) {
+      background-image: url('https://glasseruae.com/assets/images/slide4.jpg'); /* Assuming slide4.jpg exists */
+      animation-delay: 18s;
+    }
+
+    @keyframes slideshow {
+      0% { opacity: 0; animation-timing-function: ease-in; }
+      5% { opacity: 1; transform: scale(1.05); } /* Slightly zoom in for effect */
+      20% { opacity: 1; transform: scale(1); }
+      25% { opacity: 0; transform: scale(0.95); animation-timing-function: ease-out; }
+      100% { opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1; /* Ensure text is above slideshow */
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #0e1a2b;
+      position: relative;
+    }
+    .section h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background-color: #add8e6;
+        border-radius: 2px;
+    }
+    #about {
+      display: flex;
+      flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+      align-items: center;
+      gap: 2rem;
+      padding-top: 5rem; /* Adjust padding due to h2::after */
+    }
+    #about .about-content {
+      flex: 1;
+      min-width: 300px; /* Minimum width before wrapping */
+    }
+    #about .about-image {
+      flex: 1;
+      min-width: 300px; /* Minimum width before wrapping */
+      text-align: center;
+    }
+    #about .about-image img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .services, .gallery, .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-item, .gallery-item, .feature-item {
+      background: #f4f4f4;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-item:hover, .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .service-item img, .gallery-item img {
+      width: 100%;
+      height: 200px; /* Standardize image height */
+      object-fit: cover; /* Cover the area, crop if necessary */
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .service-item h3, .feature-item h3 {
+      color: #0e1a2b;
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+    .feature-item .icon {
+      font-size: 2.5rem;
+      color: #add8e6;
+      margin-right: 15px;
+      line-height: 1; /* Ensure icon doesn't add extra line height */
+    }
+    .feature-item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .contact {
+      background: #0e1a2b; /* Dark background for contact section */
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .contact h2 {
+        color: white;
+    }
+    .contact p {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    footer {
+      background: #0e1a2b;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid #2a3b4c;
+    }
+    footer .footer-content {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        text-align: left;
+        padding-bottom: 1rem;
+    }
+    footer .footer-col h4 {
+        color: #add8e6;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    footer .footer-col h4::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 40px;
+        height: 2px;
+        background-color: white;
+    }
+    footer .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    footer .footer-col ul li {
+        margin-bottom: 0.7rem;
+    }
+    footer .footer-col ul li a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    footer .footer-col ul li a:hover {
+        color: #add8e6;
+    }
+    footer .footer-col .social-links a {
+        display: inline-block;
+        margin-right: 10px;
+        color: white;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+    footer .footer-col .social-links a:hover {
+        color: #add8e6;
+    }
+    footer .copyright {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+      nav a {
+        margin: 0 10px;
+      }
+      .section {
+        padding: 2rem 1rem;
+      }
+      #about {
+        flex-direction: column;
+      }
+      footer .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+      }
+      footer .footer-col h4::after {
+          left: 50%;
+          transform: translateX(-50%);
+      }
+      footer .footer-col .social-links {
+          text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://glasseruae.com/assets/images/logo-dark.png" alt="Glasser UAE Logo">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#features">Why Us</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="hero-slideshow"></div>
+    <div class="hero-slideshow"></div>
+    <div class="hero-slideshow"></div>
+    <div class="hero-slideshow"></div>
+    <div class="hero-content">
+      <h1>Premium Glass & Aluminium Solutions in UAE</h1>
+    </div>
+  </section>
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <div class="about-content">
+      <p><strong>Glasser UAE</strong> stands as a beacon of excellence in providing high-quality glass and aluminium fabrication solutions across the United Arab Emirates. With a steadfast commitment to innovation and craftsmanship, we specialize in delivering bespoke solutions that transform ordinary spaces into extraordinary environments.</p>
+      <p>Our expertise spans a wide range of applications, including sophisticated customized partitions, cutting-edge façade systems, and modern architectural glass installations. We understand that every project is unique, and our team works tirelessly to ensure that our solutions not only meet but exceed the aesthetic and functional demands of your space.</p>
+      <p>Boasting over a decade of invaluable experience in the industry, Glasser UAE seamlessly integrates innovative design principles with state-of-the-art technology and the unparalleled skill of our craftsmen. This powerful combination allows us to execute projects with precision, delivering results that truly bring our clients' visions to life.</p>
+      <p>Whether it's designing and installing elegant glass solutions for expansive commercial office spaces or crafting luxurious aluminium applications for private villas, Glasser UAE is dedicated to transforming architectural concepts into stunning realities that stand the test of time.</p>
+    </div>
+    <div class="about-image">
+      <img src="https://glasseruae.com/assets/images/about.jpg" alt="About Glasser UAE"> </div>
+  </section>
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-item">
+        <img src="https://glasseruae.com/assets/images/services/frameless.jpg" alt="Frameless Glass">
+        <h3>Frameless Partitions</h3>
+        <p>Experience seamless elegance with our premium-quality frameless glass walls, perfect for creating open, modern, and light-filled office or home spaces. Our designs maximize natural light and offer a contemporary aesthetic.</p>
+      </div>
+      <div class="service-item">
+        <img src="https://glasseruae.com/assets/images/services/curved.jpg" alt="Curved Glass">
+        <h3>Curved Glass</h3>
+        <p>Embrace the future with our innovative curved glass installations. These unique designs provide a futuristic and aesthetically striking finish, ideal for architectural statements and dynamic interiors.</p>
+      </div>
+      <div class="service-item">
+        <img src="https://glasseruae.com/assets/images/services/door.jpg" alt="Aluminium Doors">
+        <h3>Aluminium Doors</h3>
+        <p>Discover the perfect blend of durability, security, and sleek design with our range of robust aluminium doors. Tailored for both commercial establishments and residential properties, ensuring long-lasting performance.</p>
+      </div>
+      <div class="service-item">
+        <img src="https://glasseruae.com/assets/images/services/louvre.jpg" alt="Aluminium Louvres">
+        <h3>Aluminium Louvres</h3>
+        <p>Combine optimal ventilation with sophisticated style through our expertly crafted aluminium louvre panels. Ideal for contemporary façades, sun shading, and privacy screens, enhancing both function and form.</p>
+      </div>
+    </div>
+  </section>
+  <section id="features" class="section">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="feature-item">
+        <span class="icon">🏆</span>
+        <div>
+          <h3>Certified Materials</h3>
+          <p>We commit to excellence by using only top-grade glass and aluminium materials, rigorously sourced from trusted international and local suppliers to ensure superior quality and longevity.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="icon">🇦🇪</span>
+        <div>
+          <h3>Local Expertise</h3>
+          <p>Strategically based in Sharjah, our dedicated team possesses an in-depth understanding of the UAE’s dynamic construction standards, local regulations, and the unique needs of our diverse clientele.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="icon">📐</span>
+        <div>
+          <h3>Customization</h3>
+          <p>Our strength lies in our ability to provide tailor-made glass and aluminium designs. Each project, regardless of its scale—from intricate small-scale installations to large architectural endeavors—is met with personalized solutions.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="icon">⏰</span>
+        <div>
+          <h3>Timely Delivery</h3>
+          <p>We pride ourselves on efficiency and reliability. All projects are meticulously planned and delivered punctually, complemented by our unmatched after-sales support to ensure complete client satisfaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <div class="gallery-item"><img src="https://glasseruae.com/assets/images/gallery/project1.jpg" alt="Project 1"></div>
+      <div class="gallery-item"><img src="https://glasseruae.com/assets/images/gallery/project2.jpg" alt="Project 2"></div>
+      <div class="gallery-item"><img src="https://glasseruae.com/assets/images/gallery/project3.jpg" alt="Project 3"></div>
+      <div class="gallery-item"><img src="https://glasseruae.com/assets/images/gallery/project4.jpg" alt="Project 4"></div>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>For inquiries, reach out to us:</p>
+    <p>Email: <a href="mailto:info@glasseruae.com" style="color: white; text-decoration: underline;">info@glasseruae.com</a></p>
+    <p>Phone: <a href="tel:+971501234567" style="color: white; text-decoration: underline;">+971 50 123 4567</a></p>
+    <p>Address: Industrial Area 4, Sharjah, UAE</p>
+    <p>Working Hours: Saturday - Thursday | 9:00 AM - 6:00 PM</p>
+  </section>
+  <footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>About Glasser UAE</h4>
+            <p>Glasser UAE is a leading provider of premium glass and aluminium fabrication solutions, dedicated to transforming architectural visions into stunning realities across the UAE.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#features">Why Choose Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <ul>
+                <li>Email: <a href="mailto:info@glasseruae.com">info@glasseruae.com</a></li>
+                <li>Phone: <a href="tel:+971501234567">+971 50 123 4567</a></li>
+                <li>Address: Industrial Area 4, Sharjah, UAE</li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="https://www.facebook.com/GlasserUAE" target="_blank" aria-label="Facebook">FB</a>
+                <a href="https://www.instagram.com/GlasserUAE" target="_blank" aria-label="Instagram">IG</a>
+                <a href="https://www.linkedin.com/company/GlasserUAE" target="_blank" aria-label="LinkedIn">IN</a>
+                </div>
+        </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Glasser UAE. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
