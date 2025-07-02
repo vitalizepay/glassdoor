@@ -13,6 +13,23 @@
       background: #fff;
       color: #333;
     }
+    .top-contact-bar {
+      background: #0b141f; /* Slightly darker than header for distinction */
+      color: white;
+      padding: 0.5rem 2rem;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+    .top-contact-bar a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .top-contact-bar a:hover {
+      color: #add8e6;
+    }
     header {
       background: #0e1a2b;
       color: white;
@@ -259,6 +276,28 @@
         font-size: 0.9rem;
         text-align: center;
     }
+    /* WhatsApp Chat Icon */
+    .whatsapp-chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366; /* WhatsApp green */
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+    .whatsapp-chat-icon:hover {
+        transform: scale(1.1);
+    }
     /* Responsive Adjustments */
     @media (max-width: 768px) {
       .hero h1 {
@@ -292,10 +331,20 @@
       footer .footer-col .social-links {
           text-align: center;
       }
+      .top-contact-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        padding: 0.5rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="top-contact-bar">
+    <a href="tel:+971501234567">Phone: +971 50 123 4567</a>
+    <a href="mailto:info@glasseruae.com">Email: info@glasseruae.com</a>
+  </div>
   <header>
     <img src="logo-dark.png" alt="Glasser UAE Logo">
     <nav>
@@ -438,5 +487,7 @@
       <p>&copy; 2025 Glasser UAE. All rights reserved.</p>
     </div>
   </footer>
+  <a href="https://wa.me/971568400838" class="whatsapp-chat-icon" target="_blank" aria-label="Chat on WhatsApp">
+    &#x2709; </a>
 </body>
 </html>
